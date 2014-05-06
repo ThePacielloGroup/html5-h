@@ -1,45 +1,20 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
-<polymer-element name="w3c-subhead">
+<polymer-element name="w3c-heading">
 <template>
 <style>
-h1  :host {
+ :host {
   display: block;
-   font-size:80%; 
-   color:#039; 
-   font-style:italic;
     }   
 	
-	:host {
-  display: block;
-   font-size:1.2em;
- font-wieght:bold;
-    }    
-	 :host .rolelabel {
-position: absolute !important;
-clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-clip: rect(1px, 1px, 1px, 1px);
-padding:0 !important;
-border:0 !important;
-height: 1px !important;
-width: 1px !important;
-overflow: hidden;
-}
+	
+	 
     </style>
     
-<div><span class="rolelabel">sub heading:</span><content></content></div>
+<div><content></content></div>
 </template>
 <script>
-		Polymer('w3c-subhead', {
-			ready: function() {
-				if(this.parentElement.tagName.length==2 && this.parentElement.tagName[0]=="H" && parseInt(this.parentElement.tagName[1]) > 0)  {
-				//this.setAttribute('aria-label', 'subheading'); do nothing
-				
-				}
-				else 
-				{this.setAttribute('role', 'group');
-					}
-			},
+		Polymer('w3c-heading', {	
 		});
 	</script>
 	
