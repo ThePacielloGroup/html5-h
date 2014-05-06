@@ -5,10 +5,10 @@ custom heading element intended to replace h1-h6 with a single heading element. 
 
 
 currently done:
-implemented styling using moz- property haeding size reflects nesting. try [demo page](http://thepaciellogroup.github.io/w3c-heading/) in FF 
+implemented styling (heading size based on section/nav/article/aside/footer nesting level) using moz-/-wbkit property. Try [demo page](http://thepaciellogroup.github.io/w3c-heading/) in FF or chrome/safari 
 
 to do:
 * add scripting to reflect outline depth in aria-level property + add heading role
-* get styling to work cross browser
+* get styling to work in IE (now works in chrome/webkit/firefox)
 * create spec document.
 * * + tons of other things am sure...
