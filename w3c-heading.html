@@ -1,9 +1,7 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
-
 <polymer-element name="w3c-heading">
 <template>
 <style>
-   
 :host {
     display: block;
     font-size: 2em;
@@ -75,16 +73,35 @@ font-size: .67em;
 -webkit-margin-before: 2.33__qem;
 -webkit-margin-after: 2.33em;
 }
-
 </style>
 <div><content></content></div>
 </template>
-
 <script>
-Polymer('w3c-heading', {	
-ready: function(){ this.setAttribute('role', 'heading')} 
-// aria-level logic to add
+function nestingLevel(elm) {
+  var nesting = 1;
+  var sectioning_elements = [
+    'article',
+    'aside',
+    'nav',
+    'section'
+  ];
+
+  // Thanks to http://stackoverflow.com/a/5178132 for the tree-climbing
+  // technique.
+  for (var nowt = null; elm && elm.nodeType == 1; elm = elm.parentNode) {
+    if( sectioning_elements.indexOf(elm.localName.toLowerCase()) > -1 ) {
+      nesting++;
+    }
+  };
+
+  return nesting;
+}
+
+Polymer('w3c-heading', {
+  ready: function() {
+    this.setAttribute('role', 'heading');
+    this.setAttribute('aria-level', nestingLevel(this));
+  }
 });
 </script>
-	
 </polymer-element>
