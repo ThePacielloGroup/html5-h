@@ -8,7 +8,7 @@ currently done:
 implemented styling using moz- property haeding size reflects nesting. try [demo page](http://thepaciellogroup.github.io/w3c-heading/) in FF 
 
 to do:
-* add scripting to reflect outline depth in aria-level property + add hading role
+* add scripting to reflect outline depth in aria-level property + add heading role
 * get styling to work cross browser
 * create spec document.
 * * + tons of other things am sure...
