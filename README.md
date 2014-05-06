@@ -8,7 +8,6 @@ currently done:
 implemented styling (heading size based on section/nav/article/aside/footer nesting level) using moz-/-webkit property. Try [demo page](http://thepaciellogroup.github.io/w3c-heading/) in FF or chrome/safari 
 
 to do:
-* add scripting to reflect outline depth in aria-level property + add heading role
 * get styling to work in IE (now works in chrome/webkit/firefox)
 * create spec document.
 * * + tons of other things am sure...
