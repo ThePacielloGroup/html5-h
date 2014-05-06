@@ -1,9 +1,7 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
-
 <polymer-element name="w3c-heading">
 <template>
 <style>
-   
 :host {
     display: block;
     font-size: 2em;
@@ -75,16 +73,58 @@ font-size: .67em;
 -webkit-margin-before: 2.33__qem;
 -webkit-margin-after: 2.33em;
 }
-
 </style>
 <div><content></content></div>
 </template>
-
 <script>
-Polymer('w3c-heading', {	
-ready: function(){ this.setAttribute('role', 'heading')} 
-// aria-level logic to add
+// Thanks to http://stackoverflow.com/a/5178132
+function createXPathFromElement(elm) {
+    var allNodes = document.getElementsByTagName('*');
+    for (var segs = []; elm && elm.nodeType == 1; elm = elm.parentNode)
+    {
+        if (elm.hasAttribute('id')) {
+                var uniqueIdCount = 0;
+                for (var n=0;n < allNodes.length;n++) {
+                    if (allNodes[n].hasAttribute('id') && allNodes[n].id == elm.id) uniqueIdCount++;
+                    if (uniqueIdCount > 1) break;
+                };
+                if ( uniqueIdCount == 1) {
+                    segs.unshift('id("' + elm.getAttribute('id') + '")');
+                    return segs.join('/');
+                } else {
+                    segs.unshift(elm.localName.toLowerCase() + '[@id="' + elm.getAttribute('id') + '"]');
+                }
+        } else if (elm.hasAttribute('class')) {
+            segs.unshift(elm.localName.toLowerCase() + '[@class="' + elm.getAttribute('class') + '"]');
+        } else {
+            for (i = 1, sib = elm.previousSibling; sib; sib = sib.previousSibling) {
+                if (sib.localName == elm.localName)  i++; };
+                segs.unshift(elm.localName.toLowerCase() + '[' + i + ']');
+        };
+    };
+    return segs.length ? '/' + segs.join('/') : null;
+};
+
+function nestingLevel(element) {
+  // TODO currently this works out the XPath of the element and then
+  //      counts the nesting level using regex match functions -- YUCK!
+  //      Just doing it this way first off to see if it works; if so
+  //      we can refactor the XPath-making function to do what we want
+  //      much faster!
+  var xpath = createXPathFromElement(element);
+  var matches = xpath.match(/article|aside|nav|section/g);
+  if( matches ) {
+    return matches.length + 1;
+  } else {
+    return 1;
+  }
+}
+
+Polymer('w3c-heading', {
+  ready: function() {
+    this.setAttribute('role', 'heading');
+    this.setAttribute('aria-level', nestingLevel(this));
+  }
 });
 </script>
-	
 </polymer-element>
