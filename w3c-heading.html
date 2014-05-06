@@ -3,18 +3,8 @@
 <polymer-element name="w3c-heading">
 <template>
 <style>
- :host {
-  display: block;
-    }   
-	
-	
-	 
-    </style>
-    
-<div><content></content></div>
-</template>
-<style>
-w3c-heading {
+   
+:host {
     display: block;
     font-size: 2em;
     font-weight: bold;
@@ -87,9 +77,14 @@ font-size: .67em;
 }
 
 </style>
+<div><content></content></div>
+</template>
+
 <script>
-		Polymer('w3c-heading', {	
-		});
-	</script>
+Polymer('w3c-heading', {	
+ready: function(){ this.setAttribute('role', 'heading')} 
+// aria-level logic to add
+});
+</script>
 	
 </polymer-element>
