@@ -7,20 +7,39 @@
   <link rel="import" href="w3c-heading.html">
   <script type="text/javascript" src="http://hitchjs.com/dist/hitch-0.6.3.min.js"></script>
   <style data-hitch-interpret="true">
-  :-hitch-anyof(article, aside, nav, section) > w3c-heading {
+   :-hitch-anyof(article,aside,nav,section) > w3c-heading {
       display: block;
       font-size: 1.5em;
       font-weight: bold;
       margin: 0.83em 0;
-	  color:red;
     }
-	
-:-hitch-anyof(article, aside, nav, section) > :-hitch-anyof(article, aside, nav, section) > w3c-heading {
+
+    :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > w3c-heading {
       display: block;
-      font-size: 1.5em;
+      font-size: 1.17em;
       font-weight: bold;
-      margin: 0.83em 0;
-	  color:blue;
+      margin: 1em 0;
+    }
+
+    :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > w3c-heading {
+       display: block;
+      font-size: 1em;
+      font-weight: bold;
+      margin: 1.33em 0;
+    }
+
+    :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > w3c-heading {
+       display: block;
+      font-size: 0.83em;
+      font-weight: bold;
+      margin: 1.67em 0;
+    }
+
+    :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > :-hitch-anyof(article,aside,nav,section) > w3c-heading {
+      display: block;
+      font-size: 0.67em;
+      font-weight: bold;
+      margin: 2.33em 0;
     }
     section {
       border: 2px dashed #000099;
