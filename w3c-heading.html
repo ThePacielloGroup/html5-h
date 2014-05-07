@@ -1,14 +1,22 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
+<script type="text/javascript" src="hitch-0.6.1.min.js"></script>
 <polymer-element name="w3c-heading">
   <template>
     <content></content>
   </template>
-  <style>
+  <style data-hitch-interpret>
     w3c-heading {
       display: block;
       font-size: 2em;
       font-weight: bold;
       margin: 0.67em 0;
+    }
+
+:-hitch-has (article, aside, nav, section) w3c-heading {
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 0.83em 0;
     }
 
     /* Firefox styles */
