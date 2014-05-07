@@ -1,81 +1,51 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
-
 <polymer-element name="w3c-heading">
   <template>
+    <style>
+      :host {
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        margin: 0.67em 0;
+      }
+
+      :host[aria-level="2"] {
+        display: block;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0.83em 0;
+      }
+
+      :host[aria-level="3"] {
+        display: block;
+        font-size: 1.17em;
+        font-weight: bold;
+        margin: 1em 0;
+      }
+
+      :host[aria-level="4"] {
+        display: block;
+        font-size: 1em;
+        font-weight: bold;
+        margin: 1.33em 0;
+      }
+
+      :host[aria-level="5"] {
+        display: block;
+        font-size: 0.83em;
+        font-weight: bold;
+        margin: 1.67em 0;
+      }
+
+      :host[aria-level="6"] {
+        display: block;
+        font-size: 0.67em;
+        font-weight: bold;
+        margin: 2.33em 0;
+      }
+    </style>
     <content></content>
   </template>
-  <style>
-    w3c-heading {
-      display: block;
-      font-size: 2em;
-      font-weight: bold;
-      margin: 0.67em 0;
-    }
-
-    /* Firefox styles */
-    *:-moz-any(article, aside, nav, section) w3c-heading {
-      display: block;
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 0.83em 0;
-    }
-    *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) w3c-heading {
-      display: block;
-      font-size: 1.17em;
-      font-weight: bold;
-      margin: 1em 0;
-    }
-    *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) w3c-heading {
-      display: block;
-      font-size: 1em;
-      font-weight: bold;
-      margin: 1.33em 0;
-    }
-    *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) w3c-heading {
-      display: block;
-      font-size: 0.83em;
-      font-weight: bold;
-      margin: 1.67em 0;
-    }
-
-    *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) *:-moz-any(article, aside, nav, section) w3c-heading {
-      display: block;
-      font-size: 0.67em;
-      font-weight: bold;
-      margin: 2.33em 0;
-    }
-
-    /* blink/webkit styles */
-    :-webkit-any(article,aside,nav,section) w3c-heading {
-   font-size: 1.5em;
-      -webkit-margin-before: 0.83__qem;
-      -webkit-margin-after: 0.83em;
-    }
-
-    :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) w3c-heading {
-      font-size: 1.17em;
-      -webkit-margin-before: 1__qem;
-      -webkit-margin-after: 1em;
-    }
-
-    :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) w3c-heading {
-      font-size: 1.00em;
-      -webkit-margin-before: 1.33__qem;
-      -webkit-margin-after: 1.33em;
-    }
-
-    :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) w3c-heading {
-      font-size: .83em;
-      -webkit-margin-before: 1.67__qem;
-      -webkit-margin-after: 1.67em;
-    }
-
-    :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) w3c-heading {
-      font-size: .67em;
-      -webkit-margin-before: 2.33__qem;
-      -webkit-margin-after: 2.33em;
-    }
-  </style>
   <script>
     function nestingLevel(element) {
       var nesting = 1;
