@@ -1,10 +1,11 @@
 {
-  "name": "foot-note",
+  "name": "w3c-heading",
   "version": "0.0.1",
   "homepage": "https://github.com/ThePacielloGroup/w3c-heading",
   "authors": [
-    "Steve Faulkner <sfaulkner@paciellogroup.com>"
-    "Cédric Trévisan <ctrevisan@paciellogroup.com>"
+    "Steve Faulkner <sfaulkner@paciellogroup.com>",
+    "Cédric Trévisan <ctrevisan@paciellogroup.com>",
+    "Matthew Tylee Atkinson <matkinson@paciellogroup.com>"
   ],
   "license": "MIT",
   "private": true,
