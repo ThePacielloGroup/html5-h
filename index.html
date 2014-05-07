@@ -5,23 +5,7 @@
   <title>w3c-heading Demo</title>
   <script src="bower_components/platform/platform.js"></script>
   <link rel="import" href="w3c-heading.html">
-  <script type="text/javascript" src="http://hitchjs.com/dist/hitch-0.6.3.min.js"></script>
-  <style data-hitch-interpret="true">
-  :-hitch-anyof(article, aside, nav, section) > w3c-heading {
-      display: block;
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 0.83em 0;
-	  color:red;
-    }
-	
-:-hitch-anyof(article, aside, nav, section) > :-hitch-anyof(article, aside, nav, section) > w3c-heading {
-      display: block;
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 0.83em 0;
-	  color:blue;
-    }
+  <style>
     section {
       border: 2px dashed #000099;
       padding: 5px;
@@ -44,7 +28,7 @@
   <w3c-heading>Ramones: Hey! Ho! Let's Go</w3c-heading>
   <div class="excode">
   <p><strong>code:</strong></p>
-  <pre><code>&lt;w3c-heading&gt;Ramones:Hey! Ho! Let's Go&lt;/w3c-heading&gt;</code></pre>
+  <pre><code>&lt;w3c-heading&gt;Ramones: Hey! Ho! Let's Go&lt;/w3c-heading&gt;</code></pre>
   </div>
   <w3c-heading>Heading text level 1</w3c-heading>
   <section><w3c-heading>Heading text level 2</w3c-heading>
