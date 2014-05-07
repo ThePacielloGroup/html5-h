@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+   pre { margin-left: 2em; white-space: pre-wrap; }
+   h2 { margin: 3em 0 1em 0; }
+   h3 { margin: 2.5em 0 1em 0; }
+   h4 { margin: 2.5em 0 0.75em 0; }
+   h5, h6 { margin: 2.5em 0 1em; }
+   h1 + h2, h1 + h2 + h2 { margin: 0.75em 0 0.75em; }
+   h2 + h3, h3 + h4, h4 + h5, h5 + h6 { margin-top: 0.5em; }
+   p { margin: 1em 0; }
+   hr:not(.top) { display: block; background: none; border: none; padding: 0; margin: 2em 0; height: auto; }
+   dl, dd { margin-top: 0; margin-bottom: 0; }
+   dt { margin-top: 0.75em; margin-bottom: 0.25em; clear: left; }
+   dt + dt { margin-top: 0; }
+   dd dt { margin-top: 0.25em; margin-bottom: 0; }
+   dd p { margin-top: 0; }
+   dd dl + p { margin-top: 1em; }
+   dd table + p { margin-top: 1em; }
+   p + * > li, dd li { margin: 1em 0; }
+   dt, dfn { font-weight: bold; font-style: normal; }
+   i, em { font-style: italic; }
+   dt dfn { font-style: italic; }
+   pre, code { font-size: inherit; font-family: monospace; font-variant: normal; }
+   pre strong { color: black; font: inherit; font-weight: bold; background: yellow; }
+   pre em { font-weight: bolder; font-style: normal; }
+   @media screen { code { color: orangered; } code :link, code :visited { color: inherit; } }
+   var sub { vertical-align: bottom; font-size: smaller; position: relative; top: 0.1em; }
+   table { border-collapse: collapse; border-style: hidden hidden none hidden; }
+   table thead, table tbody { border-bottom: solid; }
+   table tbody th:first-child { border-left: solid; }
+   table tbody th { text-align: left; }
+   table td, table th { border-left: solid; border-right: solid; border-bottom: solid thin; vertical-align: top; padding: 0.2em; }
+   blockquote { margin: 0 0 0 2em; border: 0; padding: 0; font-style: italic; }
+
+   .bad, .bad *:not(.XXX) { color: gray; border-color: gray; background: transparent; }
+   .matrix, .matrix td { border: none; text-align: right; }
+   .matrix { margin-left: 2em; }
+   .dice-example { border-collapse: collapse; border-style: hidden solid solid hidden; border-width: thin; margin-left: 3em; }
+   .dice-example caption { width: 30em; font-size: smaller; font-style: italic; padding: 0.75em 0; text-align: left; }
+   .dice-example td, .dice-example th { border: solid thin; width: 1.35em; height: 1.05em; text-align: center; padding: 0; }
+
+   .toc dfn, h1 dfn, h2 dfn, h3 dfn, h4 dfn, h5 dfn, h6 dfn { font: inherit; }
+   img.extra, p.overview { float: right; }
+   pre.idl { border: solid thin; background: #EEEEEE; color: black; padding: 0.5em 1em; position: relative; }
+   pre.idl :link, pre.idl :visited { color: inherit; background: transparent; }
+   pre.idl::before { content: "IDL"; font: bold small sans-serif; padding: 0.5em; background: white; position: absolute; top: 0; margin: -1px 0 0 -4em; width: 1.5em; border: thin solid; border-radius: 0 0 0 0.5em }
+   pre.css { border: solid thin; background: #FFFFEE; color: black; padding: 0.5em 1em; }
+   pre.css:first-line { color: #AAAA50; }
+   dl.domintro { color: green; margin: 2em 0 2em 2em; padding: 0.5em 1em; border: none; background: #DDFFDD; }
+   hr + dl.domintro, div.impl + dl.domintro { margin-top: 2.5em; margin-bottom: 1.5em; }
+   dl.domintro dt, dl.domintro dt * { color: black; text-decoration: none; }
+   dl.domintro dd { margin: 0.5em 0 1em 2em; padding: 0; }
+   dl.domintro dd p { margin: 0.5em 0; }
+   dl.domintro:before { display: table; margin: -1em -0.5em -0.5em auto; width: auto; content: 'This box is non-normative. Implementation requirements are given below this box.'; color: black; font-style: italic; border: solid 2px; background: white; padding: 0 0.25em; }
+   dl.switch { padding-left: 2em; }
+   dl.switch > dt { text-indent: -1.5em; }
+   dl.switch > dt:before { content: '\21AA'; padding: 0 0.5em 0 0; display: inline-block; width: 1em; text-align: right; line-height: 0.5em; }
+   dl.triple { padding: 0 0 0 1em; }
+   dl.triple dt, dl.triple dd { margin: 0; display: inline }
+   dl.triple dt:after { content: ':'; }
+   dl.triple dd:after { content: '\A'; white-space: pre; }
+   .diff-old { text-decoration: line-through; color: silver; background: transparent; }
+   .diff-chg, .diff-new { text-decoration: underline; color: green; background: transparent; }
+   a .diff-new { border-bottom: 1px blue solid; }
+
+   h2 { page-break-before: always; }
+   h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+   h1 + h2, hr + h2.no-toc { page-break-before: auto; }
+
+   p  > span:not([title=""]):not([class="XXX"]):not([class="impl"]):not([class="note"]),
+   li > span:not([title=""]):not([class="XXX"]):not([class="impl"]):not([class="note"]), { border-bottom: solid #9999CC; }
+
+   div.head { margin: 0 0 1em; padding: 1em 0 0 0; }
+   div.head p { margin: 0; }
+   div.head h1 { margin: 0; }
+   div.head .logo { float: right; margin: 0 1em; }
+   div.head .logo img { border: none } /* remove border from top image */
+   div.head dl { margin: 1em 0; }
+   div.head p.copyright, div.head p.alt { font-size: x-small; font-style: oblique; margin: 0; }
+
+   body > .toc > li { margin-top: 1em; margin-bottom: 1em; }
+   body > .toc.brief > li { margin-top: 0.35em; margin-bottom: 0.35em; }
+   body > .toc > li > * { margin-bottom: 0.5em; }
+   body > .toc > li > * > li > * { margin-bottom: 0.25em; }
+   .toc, .toc li { list-style: none; }
+
+   .brief { margin-top: 1em; margin-bottom: 1em; line-height: 1.1; }
+   .brief li { margin: 0; padding: 0; }
+   .brief li p { margin: 0; padding: 0; }
+
+   .category-list { margin-top: -0.75em; margin-bottom: 1em; line-height: 1.5; }
+   .category-list::before { content: '\21D2\A0'; font-size: 1.2em; font-weight: 900; }
+   .category-list li { display: inline; }
+   .category-list li:not(:last-child)::after { content: ', '; }
+   .category-list li > span, .category-list li > a { text-transform: lowercase; }
+   .category-list li * { text-transform: none; } /* don't affect <code> nested in <a> */
+
+   .XXX { color: #E50000; background: white; border: solid red; padding: 0.5em; margin: 1em 0; }
+   .XXX > :first-child { margin-top: 0; }
+   p .XXX { line-height: 3em; }
+   .annotation { border: solid thin black; background: #0C479D; color: white; position: relative; margin: 8px 0 20px 0; }
+   .annotation:before { position: absolute; left: 0; top: 0; width: 100%; height: 100%; margin: 6px -6px -6px 6px; background: #333333; z-index: -1; content: ''; }
+   .annotation :link, .annotation :visited { color: inherit; }
+   .annotation :link:hover, .annotation :visited:hover { background: transparent; }
+   .annotation span { border: none ! important; }
+   .note { color: green; background: transparent; font-family: sans-serif; }
+   .warning { color: red; background: transparent; }
+   .note, .warning { font-weight: bolder; font-style: italic; }
+   .note em, .warning em, .note i, .warning i { font-style: normal; }
+   p.note, div.note { padding: 0.5em 2em; }
+   span.note { padding: 0 2em; }
+   .note p:first-child, .warning p:first-child { margin-top: 0; }
+   .note p:last-child, .warning p:last-child { margin-bottom: 0; }
+   .warning:before { font-style: normal; }
+   p.note:before { content: 'Note: '; }
+   p.warning:before { content: '\26A0 Warning! '; }
+
+   .bookkeeping:before { display: block; content: 'Bookkeeping details'; font-weight: bolder; font-style: italic; }
+   .bookkeeping { font-size: 0.8em; margin: 2em 0; }
+   .bookkeeping p { margin: 0.5em 2em; display: list-item; list-style: square; }
+   .bookkeeping dt { margin: 0.5em 2em 0; }
+   .bookkeeping dd { margin: 0 3em 0.5em; }
+
+   h4 { position: relative; z-index: 3; }
+   h4 + .element, h4 + div + .element { margin-top: -2.5em; padding-top: 2em; }
+   .element {
+     background: #EEEEFF;
+     color: black;
+     margin: 0 0 1em 0.15em;
+     padding: 0 1em 0.25em 0.75em;
+     border-left: solid #9999FF 0.25em;
+     position: relative;
+     z-index: 1;
+   }
+   .element:before {
+     position: absolute;
+     z-index: 2;
+     top: 0;
+     left: -1.15em;
+     height: 2em;
+     width: 0.9em;
+     background: #EEEEFF;
+     content: ' ';
+     border-style: none none solid solid;
+     border-color: #9999FF;
+     border-width: 0.25em;
+   }
+
+   .example { display: block; color: #222222; background: #FCFCFC; border-left: double; margin-left: 2em; padding-left: 1em; }
+   td > .example:only-child { margin: 0 0 0 0.1em; }
+
+   ul.domTree, ul.domTree ul { padding: 0 0 0 1em; margin: 0; }
+   ul.domTree li { padding: 0; margin: 0; list-style: none; position: relative; }
+   ul.domTree li li { list-style: none; }
+   ul.domTree li:first-child::before { position: absolute; top: 0; height: 0.6em; left: -0.75em; width: 0.5em; border-style: none none solid solid; content: ''; border-width: 0.1em; }
+   ul.domTree li:not(:last-child)::after { position: absolute; top: 0; bottom: -0.6em; left: -0.75em; width: 0.5em; border-style: none none solid solid; content: ''; border-width: 0.1em; }
+   ul.domTree span { font-style: italic; font-family: serif; }
+   ul.domTree .t1 code { color: purple; font-weight: bold; }
+   ul.domTree .t2 { font-style: normal; font-family: monospace; }
+   ul.domTree .t2 .name { color: black; font-weight: bold; }
+   ul.domTree .t2 .value { color: blue; font-weight: normal; }
+   ul.domTree .t3 code, .domTree .t4 code, .domTree .t5 code { color: gray; }
+   ul.domTree .t7 code, .domTree .t8 code { color: green; }
+   ul.domTree .t10 code { color: teal; }
+
+   body.dfnEnabled dfn { cursor: pointer; }
+   .dfnPanel {
+     display: inline;
+     position: absolute;
+     z-index: 10;
+     height: auto;
+     width: auto;
+     padding: 0.5em 0.75em;
+     font: small sans-serif, Droid Sans Fallback;
+     background: #DDDDDD;
+     color: black;
+     border: outset 0.2em;
+   }
+   .dfnPanel * { margin: 0; padding: 0; font: inherit; text-indent: 0; }
+   .dfnPanel :link, .dfnPanel :visited { color: black; }
+   .dfnPanel p { font-weight: bolder; }
+   .dfnPanel * + p { margin-top: 0.25em; }
+   .dfnPanel li { list-style-position: inside; }
+
+   #configUI { position: absolute; z-index: 20; top: 10em; right: 1em; width: 11em; font-size: small; }
+   #configUI p { margin: 0.5em 0; padding: 0.3em; background: #EEEEEE; color: black; border: inset thin; }
+   #configUI p label { display: block; }
+   #configUI #updateUI, #configUI .loginUI { text-align: center; }
+   #configUI input[type=button] { display: block; margin: auto; }
+
+   fieldset { margin: 1em; padding: 0.5em 1em; }
+   fieldset > legend + * { margin-top: 0; }
+   fieldset > :last-child { margin-bottom: 0; }
+   fieldset p { margin: 0.5em 0; }
+
+  </style>
+ <style type="text/css">
+
+   .applies thead th > * { display: block; }
+   .applies thead code { display: block; }
+   .applies tbody th { whitespace: nowrap; }
+   .applies td { text-align: center; }
+   .applies .yes { background: yellow; }
+
+   .matrix, .matrix td { border: hidden; text-align: right; }
+   .matrix { margin-left: 2em; }
+
+   .dice-example { border-collapse: collapse; border-style: hidden solid solid hidden; border-width: thin; margin-left: 3em; }
+   .dice-example caption { width: 30em; font-size: smaller; font-style: italic; padding: 0.75em 0; text-align: left; }
+   .dice-example td, .dice-example th { border: solid thin; width: 1.35em; height: 1.05em; text-align: center; padding: 0; }
+
+   td.eg { border-width: thin; text-align: center; }
+
+   #table-example-1 { border: solid thin; border-collapse: collapse; margin-left: 3em; }
+   #table-example-1 * { font-family: "Essays1743", serif; line-height: 1.01em; }
+   #table-example-1 caption { padding-bottom: 0.5em; }
+   #table-example-1 thead, #table-example-1 tbody { border: none; }
+   #table-example-1 th, #table-example-1 td { border: solid thin; }
+   #table-example-1 th { font-weight: normal; }
+   #table-example-1 td { border-style: none solid; vertical-align: top; }
+   #table-example-1 th { padding: 0.5em; vertical-align: middle; text-align: center; }
+   #table-example-1 tbody tr:first-child td { padding-top: 0.5em; }
+   #table-example-1 tbody tr:last-child td { padding-bottom: 1.5em; }
+   #table-example-1 tbody td:first-child { padding-left: 2.5em; padding-right: 0; width: 9em; }
+   #table-example-1 tbody td:first-child::after { content: leader(". "); }
+   #table-example-1 tbody td { padding-left: 2em; padding-right: 2em; }
+   #table-example-1 tbody td:first-child + td { width: 10em; }
+   #table-example-1 tbody td:first-child + td ~ td { width: 2.5em; }
+   #table-example-1 tbody td:first-child + td + td + td ~ td { width: 1.25em; }
+
+   .apple-table-examples { border: none; border-collapse: separate; border-spacing: 1.5em 0em; width: 40em; margin-left: 3em; }
+   .apple-table-examples * { font-family: "Times", serif; }
+   .apple-table-examples td, .apple-table-examples th { border: none; white-space: nowrap; padding-top: 0; padding-bottom: 0; }
+   .apple-table-examples tbody th:first-child { border-left: none; width: 100%; }
+   .apple-table-examples thead th:first-child ~ th { font-size: smaller; font-weight: bolder; border-bottom: solid 2px; text-align: center; }
+   .apple-table-examples tbody th::after, .apple-table-examples tfoot th::after { content: leader(". ") }
+   .apple-table-examples tbody th, .apple-table-examples tfoot th { font: inherit; text-align: left; }
+   .apple-table-examples td { text-align: right; vertical-align: top; }
+   .apple-table-examples.e1 tbody tr:last-child td { border-bottom: solid 1px; }
+   .apple-table-examples.e1 tbody + tbody tr:last-child td { border-bottom: double 3px; }
+   .apple-table-examples.e2 th[scope=row] { padding-left: 1em; }
+   .apple-table-examples sup { line-height: 0; }
+
+   .details-example img { vertical-align: top; }
+
+   #base64-table {
+     white-space: nowrap;
+     font-size: 0.6em;
+     column-width: 6em;
+     column-count: 5;
+     column-gap: 1em;
+     -moz-column-width: 6em;
+     -moz-column-count: 5;
+     -moz-column-gap: 1em;
+     -webkit-column-width: 6em;
+     -webkit-column-count: 5;
+     -webkit-column-gap: 1em;
+   }
+   #base64-table thead { display: none; }
+   #base64-table * { border: none; }
+   #base64-table tbody td:first-child:after { content: ':'; }
+   #base64-table tbody td:last-child { text-align: right; }
+
+   #named-character-references-table {
+     white-space: nowrap;
+     font-size: 0.6em;
+     column-width: 30em;
+     column-gap: 1em;
+     -moz-column-width: 30em;
+     -moz-column-gap: 1em;
+     -webkit-column-width: 30em;
+     -webkit-column-gap: 1em;
+   }
+   #named-character-references-table > table > tbody > tr > td:first-child + td,
+   #named-character-references-table > table > tbody > tr > td:last-child { text-align: center; }
+   #named-character-references-table > table > tbody > tr > td:last-child:hover > span { position: absolute; top: auto; left: auto; margin-left: 0.5em; line-height: 1.2; font-size: 5em; border: outset; padding: 0.25em 0.5em; background: white; width: 1.25em; height: auto; text-align: center; }
+   #named-character-references-table > table > tbody > tr#entity-CounterClockwiseContourIntegral > td:first-child { font-size: 0.5em; }
+
+   .glyph.control { color: red; }
+
+   @font-face {
+     font-family: 'Essays1743';
+     src: url('../fonts/Essays1743.ttf');
+   }
+   @font-face {
+     font-family: 'Essays1743';
+     font-weight: bold;
+     src: url('../fonts/Essays1743-Bold.ttf');
+   }
+   @font-face {
+     font-family: 'Essays1743';
+     font-style: italic;
+     src: url('../fonts/Essays1743-Italic.ttf');
+   }
+   @font-face {
+     font-family: 'Essays1743';
+     font-style: italic;
+     font-weight: bold;
+     src: url('../fonts/Essays1743-BoldItalic.ttf');
+   }
+header p.subhead {
+    color: #005A9C;
+    font: 140% sans-serif;
+    margin: 0.75em 0;
+}
+  </style>
+  <link href="http://www.w3.org/StyleSheets/TR/w3c-unofficial" rel="stylesheet" type="text/css">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h4 id="the-h1,-h2,-h3,-h4,-h5,-and-h6-elements"> The heading, h1, h2, h3, h4, h5, and    h6 elements</h4>
+<dl>
+  <dt><a data-anolis-xref="element-dfn-categories" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-categories">Categories</a>:</dt>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#flow-content-1">Flow content</a>.</dd>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#heading-content-0">Heading content</a>.</dd>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#palpable-content-0">Palpable content</a>.</dd>
+  <dt><a data-anolis-xref="element-dfn-contexts" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-contexts">Contexts in which this element can be used</a>:</dt>
+  <dd>Where <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#flow-content-1">flow content</a> is expected.</dd>
+  <dt><a data-anolis-xref="element-dfn-content-model" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-content-model">Content model</a>:</dt>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#phrasing-content-1">Phrasing content</a>.</dd>
+  <dt><a data-anolis-xref="element-dfn-attributes" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-attributes">Content attributes</a>:</dt>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#global-attributes">Global attributes</a></dd>
+  <dt><a data-anolis-xref="element-dfn-tag-omission" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-tag-omission">Tag omission in text/html</a>:</dt>
+  <dd>Neither tag is omissible</dd>
+  <dt>Allowed <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#aria-role-attribute">ARIA role attribute</a> values:</dt>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#index-aria-heading">heading</a> role (default - <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#aria-usage-note"><em>do not set</em></a>), <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#index-aria-tab">tab</a> or <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#index-aria-presentation">presentation</a>.</dd>
+  <dt>Allowed <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#state-and-property-attributes">ARIA state and property attributes</a>:</dt>
+  <dd><a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#index-aria-global">Global aria-* attributes</a></dd>
+  <dd>Any aria-* attributes <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#allowed-aria-roles,-states-and-properties">applicable to the allowed roles</a>.</dd>
+  <dt><a data-anolis-xref="element-dfn-dom" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#element-dfn-dom">DOM interface</a>:</dt>
+  <dd>
+    <pre>interface HTMLHeadingElement : <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#htmlelement">HTMLElement</a> {};</pre>
+  </dd>
+</dl>
+<p>These elements <a data-anolis-xref="represents" href="http://www.w3.org/html/wg/drafts/html/master/dom.html#represents">represent</a> headings for their sections.</p>
+<p>The semantics and meaning of these elements are defined in the section on <a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#headings-and-sections">headings and    sections</a>.</p>
+<p>The <a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a>–<a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a> elements elements have a rank given by the number in their name. The <a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a> element is said to have the highest rank, the <a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a> element has the lowest rank, and two    elements with the same name have equal rank.</p>
+<p><a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h1</a>–<a href="http://www.w3.org/html/wg/drafts/html/master/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements">h6</a> elements must not be used to markup subheadings, subtitles, alternative   titles and taglines unless intended to be the heading for a new section   or subsection. Instead use the markup patterns in the <a href="http://www.w3.org/html/wg/drafts/html/master/common-idioms.html#common-idioms">Common idioms without dedicated elements</a> section of the specification.</p>
+<div>
+  <p>As far as their respective document outlines (their heading and section structures) are     concerned, these two snippets are semantically equivalent:</p>
+  <pre>&lt;body&gt;  
+&lt;h1&gt;Let's call it a draw(ing surface)&lt;/h1&gt;  
+&lt;h2&gt;Diving in&lt;/h2&gt;  &lt;h2&gt;Simple shapes&lt;/h2&gt;  
+&lt;h2&gt;Canvas coordinates&lt;/h2&gt;  
+&lt;h3&gt;Canvas coordinates diagram&lt;/h3&gt;  
+&lt;h2&gt;Paths&lt;/h2&gt;  
+&lt;/body&gt;</pre>
+  <pre>&lt;body&gt;   
+&lt;h1&gt;Let's call it a draw(ing surface)&lt;/h1&gt;   
+&lt;section&gt;    &lt;h2&gt;Diving in&lt;/h2&gt;   &lt;/section&gt;   
+&lt;section&gt;    &lt;h2&gt;Simple shapes&lt;/h2&gt;   &lt;/section&gt;   
+&lt;section&gt;    &lt;h2&gt;Canvas coordinates&lt;/h2&gt;    &lt;section&gt;     
+&lt;h3&gt;Canvas coordinates diagram&lt;/h3&gt;    
+&lt;/section&gt;   
+&lt;/section&gt;   
+&lt;section&gt;    
+&lt;h2&gt;Paths&lt;/h2&gt;   
+&lt;/section&gt;  &lt;/body&gt;</pre>
+  <p>Authors might prefer the former style for its terseness, or the latter style for its     convenience in the face of heavy editing; which is best is purely an issue of preferred authoring     style.</p>
+</div>
+</body>
+</html>
