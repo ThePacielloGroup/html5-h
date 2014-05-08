@@ -9,18 +9,25 @@ Try the [demo page](http://thepaciellogroup.github.io/w3c-heading/).
 When author uses a &lt;w3c-heading> element the element is styled, has an ARIA [role=heading](http://www.w3.org/TR/wai-aria/roles#heading), and an [aria-level](http://www.w3.org/TR/wai-aria/states_and_properties#aria-level) assigned to reflect its [HTML5](http://www.w3.org/html/wg/drafts/html/master/) [outline depth](http://www.w3.org/html/wg/drafts/html/master/sections.html#outline-depth).
 
 Example:
+
 source code:
 
 &lt;body>
+
 &lt;w3c-heading>this heading has an outline depth of 1&lt;/w3c-heading>
+
  &lt;article>
+ 
   &lt;w3c-heading>this heading has an outline depth of 2&lt;/w3c-heading>
 
 generated code:
 
 &lt;body>
+
 &lt;w3c-heading role="heading" aria-level="1">this heading has an outline depth of 1&lt;/w3c-heading>
+
  &lt;article>
+ 
   &lt;w3c-heading role="heading" aria-level="2">this heading has an outline depth of 2&lt;/w3c-heading>
 
 
