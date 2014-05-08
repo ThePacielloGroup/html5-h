@@ -17,7 +17,7 @@ This can be seen in action by viewing the [demo page](http://thepaciellogroup.gi
 `<body>`  
 `<!-- heading scoped to body = level 1 -->`  
 `<w3c-heading>this heading has an outline depth of 1</w3c-heading>`  
-`<article>` 
+`<article>`  
 `<!-- heading nested body → article = level 2 -->`  
 `<w3c-heading>this heading has an outline depth of 2</w3c-heading>`  
 `...`
