@@ -12,7 +12,7 @@ Example:
 
 *source code:*
 
-`&lt;body>` 
+`&lt;body>`  
 `&lt;w3c-heading>this heading has an outline depth of 1&lt;/w3c-heading>`
 
  `&lt;article>`
