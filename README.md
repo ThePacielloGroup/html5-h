@@ -6,7 +6,7 @@ Custom heading element intended to replace `<h1>` to `<h6>` with a single headin
 Try the [demo page](http://thepaciellogroup.github.io/w3c-heading/).
 
 ##under the hood
-When a `<w3c-heading>` element is used  the element is styled, has an ARIA [role=heading](http://www.w3.org/TR/wai-aria/roles#heading), and an [aria-level](http://www.w3.org/TR/wai-aria/states_and_properties#aria-level) assigned to reflect its [HTML5](http://www.w3.org/html/wg/drafts/html/master/) [outline depth](http://www.w3.org/html/wg/drafts/html/master/sections.html#outline-depth).  
+When a `<w3c-heading>` element is used  the element is styled as per [HTML5 UA style sheet](http://www.w3.org/html/wg/drafts/html/master/rendering.html#sections-and-headings) advice, has an ARIA [role=heading](http://www.w3.org/TR/wai-aria/roles#heading), and an [aria-level](http://www.w3.org/TR/wai-aria/states_and_properties#aria-level) assigned to reflect its [HTML5](http://www.w3.org/html/wg/drafts/html/master/) [outline depth](http://www.w3.org/html/wg/drafts/html/master/sections.html#outline-depth).  
 
 ###Example:
 
@@ -15,8 +15,10 @@ This can be seen in action by viewing the [demo page](http://thepaciellogroup.gi
 *source code:*
 
 `<body>`  
+`<!-- heading scoped to body = level 1 -->`  
 `<w3c-heading>this heading has an outline depth of 1</w3c-heading>`  
-`<article>`  
+`<article>` 
+`<!-- heading nested body → article = level 2 -->`  
 `<w3c-heading>this heading has an outline depth of 2</w3c-heading>`  
 `...`
 
