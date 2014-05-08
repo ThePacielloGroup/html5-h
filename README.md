@@ -13,23 +13,17 @@ Example:
 *source code:*
 
 `&lt;body>`  
-`&lt;w3c-heading>this heading has an outline depth of 1&lt;/w3c-heading>`
-
- `&lt;article>`
- 
-  `&lt;w3c-heading>this heading has an outline depth of 2&lt;/w3c-heading>`
+`&lt;w3c-heading>this heading has an outline depth of 1&lt;/w3c-heading>`  
+`&lt;article>`  
+`&lt;w3c-heading>this heading has an outline depth of 2&lt;/w3c-heading>`
 
 *generated code:*
 
-`&lt;body>`
-
-`&lt;w3c-heading role="heading" aria-level="1">this heading has an outline depth of 1&lt;/w3c-heading>`
-
- `&lt;article>`
- 
-  `&lt;w3c-heading role="heading" aria-level="2">this heading has an outline depth of 2&lt;/w3c-heading>`
-   
-   `...`
+`&lt;body>`  
+`&lt;w3c-heading role="heading" aria-level="1">this heading has an outline depth of 1&lt;/w3c-heading>`  
+`&lt;article>`  
+`&lt;w3c-heading role="heading" aria-level="2">this heading has an outline depth of 2&lt;/w3c-heading>`  
+`...`
 
 ##Currently done:
 
