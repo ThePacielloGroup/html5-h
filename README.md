@@ -27,7 +27,7 @@ This can be seen in action by viewing the [demo page](http://thepaciellogroup.gi
 `and a default style of a <h1>`  
 `<article>`  
 `<w3c-heading role="heading" aria-level="2">this heading has an outline depth of 2</w3c-heading>`  
-`and a default style of a <h2>`
+`and a default style of a <h2>`  
 `...`
 
 ##Currently done:
