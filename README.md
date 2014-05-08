@@ -10,16 +10,16 @@ When author uses a &lt;w3c-heading> element the element is styled, has an ARIA [
 
 Example:
 
-source code:
+*source code:*
 
-`&lt;body>`
+`&lt;body>` 
 `&lt;w3c-heading>this heading has an outline depth of 1&lt;/w3c-heading>`
 
  `&lt;article>`
  
   `&lt;w3c-heading>this heading has an outline depth of 2&lt;/w3c-heading>`
 
-generated code:
+*generated code:*
 
 `&lt;body>`
 
