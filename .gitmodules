@@ -1,0 +1,6 @@
+[submodule "components/platform"]
+	path = components/platform
+	url = https://github.com/Polymer/platform.git
+[submodule "components/polymer"]
+	path = components/polymer
+	url = https://github.com/Polymer/polymer.git
