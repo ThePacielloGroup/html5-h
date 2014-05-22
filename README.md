@@ -40,7 +40,7 @@ Generated code:
 . . .
 ```
 
-The first `<w3c-heading>` is styled as if it were a `<h1>` and the second `<w3c-heading>` element is styled as if it were a `<h2>`.
+By default, the first `<w3c-heading>` is styled as if it were a `<h1>` and the second `<w3c-heading>` element is styled as if it were a `<h2>`.
 
 ### Styling
 
@@ -58,7 +58,7 @@ w3c-heading[level="1"] { ... }  /* all level 1 <w3c-heading>s */
 w3c-heading[level="2"] { ... }  /* all level 2 <w3c-heading>s */
 ```
 
-The `level` attribute allows `<w3c-heading>` to be used by people with no knowledge of [aria-level](http://www.w3.org/TR/wai-aria/states_and_properties#aria-level) (though `aria-level` can be used for this also).
+The `level` attribute (set automatically for you) allows `<w3c-heading>` to be used by people with no knowledge of [aria-level](http://www.w3.org/TR/wai-aria/states_and_properties#aria-level) (though `aria-level` can be used for this also).
 
 You can also style according to how it is nested within elements (this ties the styling to the exact document structure, rather than heading level):
 
