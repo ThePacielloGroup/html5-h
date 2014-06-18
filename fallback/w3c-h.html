@@ -1,0 +1,96 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<polymer-element name="w3c-h" attributes="level" extends="h1">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-weight: bold;
+      }
+
+      :host[level="1"] {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+
+      :host[level="2"] {
+        font-size: 1.5em;
+        margin: 0.83em 0;
+      }
+
+      :host[level="3"] {
+        font-size: 1.17em;
+        margin: 1em 0;
+      }
+
+      :host[level="4"] {
+        font-size: 1em;
+        margin: 1.33em 0;
+      }
+
+      :host[level="5"] {
+        font-size: 0.83em;
+        margin: 1.67em 0;
+      }
+
+      :host[level="6"] {
+        font-size: 0.67em;
+        margin: 2.33em 0;
+      }
+    </style>
+    <content></content>
+  </template>
+  <script>
+    function nestingLevel(element) {
+      // Work out the nesting level of an element via the document's structure
+      var nesting = 1;
+      var sectioningElements = [
+        'article',
+        'aside',
+        'nav',
+        'section'
+      ];
+
+      // Thanks to http://stackoverflow.com/a/5178132 for the tree-climbing
+      // technique.
+      while(element && element.nodeType === 1) {
+        if(sectioningElements.indexOf(element.localName.toLowerCase()) > -1) {
+          nesting++;
+        }
+        element = element.parentNode;
+      };
+      return nesting;
+    }
+
+    function setNaturalLevel(element) {
+      // Set 'level' and 'aria-level' (for Assistive Technologies (ATs))
+      // attributes based on the element's place in the document's structure
+      element.setAttribute('aria-level', nestingLevel(element).toString());
+      element.setAttribute('level', element.getAttribute('aria-level'));
+    }
+
+    Polymer('w3c-h', {
+      ready: function() {
+        // Work out the implicit, or reflect the user-supplied explicit, level
+        var attrLevel = this.getAttribute('level');
+        if (attrLevel) {
+          var attrLevelParsed = parseInt(attrLevel);
+          if (attrLevelParsed > 0 && attrLevel.indexOf('.') === -1) {
+            // Mirror the user-set level for Assistive Technologies (ATs)
+            // Note: we check for floats above, as "42.a" would be accepted...
+            // Note: ...but we set value via attrLevelParsed, so "+2" will work
+            this.setAttribute('aria-level', attrLevelParsed.toString());
+          } else {
+            // Unusable 'level' attribute; log it and do what's natural
+            console.log("w3c-h: 'level' attribute value '" + attrLevel +
+              "' is not a non-zero positive integer; ignoring. Element:", this);
+            setNaturalLevel(this);
+          }
+        } else {
+          // Work out the nesting level automagically from document structure
+          setNaturalLevel(this);
+        }
+
+      }
+    });
+  </script>
+</polymer-element>
