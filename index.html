@@ -2,40 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>w3c-heading Demo</title>
+  <title>w3c-h Demo</title>
   <script src="components/platform/platform.js"></script>
-  <link rel="import" href="w3c-heading.html">
-  <style>
-    section {
-      border: 2px dashed #000099;
-      padding: 5px;
-      margin: 5px
-    }
-
-    section:before {
-      content: "<section>";
-      color: #000099;
-    }
-
-    .excode {
-      border: 1px solid black;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  </style>
+  <link rel="import" href="w3c-h.html">
+  <link rel="stylesheet" href="demo.css">
 </head>
 <body unresolved>
-  <w3c-heading>Ramones: Hey! Ho! Let's Go</w3c-heading>
+  <w3c-h>Ramones: Hey! Ho! Let's Go</w3c-h>
   <div class="excode">
   <p><strong>code:</strong></p>
-  <pre><code>&lt;w3c-heading&gt;Ramones: Hey! Ho! Let's Go&lt;/w3c-heading&gt;</code></pre>
+  <pre><code>&lt;w3c-h&gt;Ramones: Hey! Ho! Let's Go&lt;/w3c-h&gt;</code></pre>
   </div>
-  <w3c-heading>Heading text level 1</w3c-heading>
-  <section><w3c-heading>Heading text level 2</w3c-heading>
-    <section><w3c-heading>Heading text level 3</w3c-heading>
-      <section><w3c-heading>Heading text level 4</w3c-heading>
-        <section><w3c-heading>Heading text level 5</w3c-heading>
-          <section><w3c-heading>Heading text level 6</w3c-heading>
+  <div class="info">
+    <p>This page uses the <strong>recommended, stand-alone</strong> version of <code>&lt;w3c-h&gt;</code>. You should use this if: you are working in a HTML5 environment; all your sectioning is done via HTML5 sectioning elements and JavaScript will be available.</p>
+    <p>If any of these conditions are not met, we suggest you use the <a href="demo-fallback.html">fallback version</a>, which extends <code>&lt;h1&gt;</code> instead. More information can be found in the <a href="https://github.com/ThePacielloGroup/w3c-h/blob/gh-pages/README.md">README</a>.</p>
+  </div>
+  <w3c-h>Heading text level 1</w3c-h>
+  <section><w3c-h>Heading text level 2</w3c-h>
+    <section><w3c-h>Heading text level 3</w3c-h>
+      <section><w3c-h>Heading text level 4</w3c-h>
+        <section><w3c-h>Heading text level 5</w3c-h>
+          <section><w3c-h>Heading text level 6</w3c-h>
           </section>
         </section>
       </section>
@@ -43,12 +30,12 @@
   </section>
   <div class="excode">
   <p><strong>code:</strong></p>
-  <pre><code>&lt;w3c-heading&gt;Heading text level 1&lt;/w3c-heading&gt;
-&lt;section&gt;&lt;w3c-heading&gt;Heading text level 2&lt;/w3c-heading&gt;
-  &lt;section&gt;&lt;w3c-heading&gt;Heading text level 3&lt;/w3c-heading&gt;
-    &lt;section&gt;&lt;w3c-heading&gt;Heading text level 4&lt;/w3c-heading&gt;
-      &lt;section&gt;&lt;w3c-heading&gt;Heading text level 5&lt;/w3c-heading&gt;
-        &lt;section&gt;&lt;w3c-heading&gt;Heading text level 6&lt;/w3c-heading&gt;
+  <pre><code>&lt;w3c-h&gt;Heading text level 1&lt;/w3c-h&gt;
+&lt;section&gt;&lt;w3c-h&gt;Heading text level 2&lt;/w3c-h&gt;
+  &lt;section&gt;&lt;w3c-h&gt;Heading text level 3&lt;/w3c-h&gt;
+    &lt;section&gt;&lt;w3c-h&gt;Heading text level 4&lt;/w3c-h&gt;
+      &lt;section&gt;&lt;w3c-h&gt;Heading text level 5&lt;/w3c-h&gt;
+        &lt;section&gt;&lt;w3c-h&gt;Heading text level 6&lt;/w3c-h&gt;
         &lt;/section&gt;
       &lt;/section&gt;
     &lt;/section&gt;

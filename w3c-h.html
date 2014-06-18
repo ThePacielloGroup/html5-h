@@ -1,5 +1,5 @@
 <link rel="import" href="components/polymer/polymer.html">
-<polymer-element name="w3c-heading">
+<polymer-element name="w3c-h" attributes="level">
   <template>
     <style>
       :host {
@@ -68,7 +68,7 @@
       element.setAttribute('level', element.getAttribute('aria-level'));
     }
 
-    Polymer('w3c-heading', {
+    Polymer('w3c-h', {
       ready: function() {
         // Work out the implicit, or reflect the user-supplied explicit, level
         var attrLevel = this.getAttribute('level');
@@ -81,7 +81,7 @@
             this.setAttribute('aria-level', attrLevelParsed.toString());
           } else {
             // Unusable 'level' attribute; log it and do what's natural
-            console.log("w3c-heading: 'level' attribute value '" + attrLevel +
+            console.log("w3c-h: 'level' attribute value '" + attrLevel +
               "' is not a non-zero positive integer; ignoring. Element:", this);
             setNaturalLevel(this);
           }
